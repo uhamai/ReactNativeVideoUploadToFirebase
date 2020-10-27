@@ -1,0 +1,43 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+target 'VideoApp' do
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+  pod 'react-native-video-helper', :path => '../node_modules/react-native-video-helper'
+
+  target 'VideoAppTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+ 
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
+ 
+  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone.podspec"
+
+
+
+
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+
+end
+
+target 'VideoApp-tvOS' do
+  # Pods for VideoApp-tvOS
+
+  target 'VideoApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
